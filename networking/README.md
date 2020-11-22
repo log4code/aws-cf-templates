@@ -75,5 +75,8 @@ ec2:ModifyVpcAttribute (vpc)
 ec2:ec2:DescribeSubnets (subnets)
 ec2:ModifySubnetAttribute (subnets)
 cloudformation:ValidateTemplate (cloudformation)
+ec2:CreateInternetGateway (internetgateway)
+ec2:DescribeInternetGateways (internetgateway)
+ec2:AttachInternetGateway (internetgateway)
 
  ```
