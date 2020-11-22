@@ -65,7 +65,7 @@ aws cloudformation create-stack --stack-name <vpcName> --template-body file://vp
  Required IAM permissions:
  
  ```
-ec2:CreateTags (cloudformation,vpc,subnets,routetable)
+ec2:CreateTags (cloudformation,vpc,subnets,routetable, securitygroup)
 ec2:CreateVpc (vpc)
 ec2:CreateSubnet (subnets)
 ec2:DescribeVpcs (vpc)
@@ -82,5 +82,8 @@ cloudformation:ValidateTemplate (cloudformation)
 ec2:CreateInternetGateway (internetgateway)
 ec2:DescribeInternetGateways (internetgateway)
 ec2:AttachInternetGateway (internetgateway)
+ec2:CreateSecurityGroup (securitygroup)
+ec2:DescribeSecurityGroups (securitygroup)
+
 
  ```
