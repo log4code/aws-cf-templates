@@ -1,1 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
 
+Parameters:
+  EnvironmentName:
+    Description: An environment name to tag to resources
+    Type: String
+    Default: BasicEC2
+    
+  EC2InstanceType:
+    Type: String
+    Default: t3.micro
+    
+  EC2AMI:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'
+    
+  SecurityGroupIds:
+    Type: String
+    
+  SubNetId:
+    Type: String
+
+
+Resources:
+  Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref EC2AMI
+      InstanceType: !Ref EC2InstanceType
+      Monitoring: true
+      SecurityGroupIds: !Split [",", !Ref SecurityGroupIds]
+      SubnetId: !Ref SubNetId
+      Tags:
+        - Key: Name
+          Value: !Ref EnvironmentName
